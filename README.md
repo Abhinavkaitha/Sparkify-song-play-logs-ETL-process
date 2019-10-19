@@ -37,7 +37,7 @@ On why to use a relational database for this case:
 
 | Column | Type | Description |
 | ------ | ---- | ----------- |
-| `songplay_id` | `INTEGER` | The main identification of the table | 
+| `songplay_id` | `INTEGER PRIMARY KEY` | The Primary key of the table | 
 | `start_time` | `DATE` | The timestamp that this song play log happened |
 | `user_id` | `INTEGER NOT NULL REFERENCES users (user_id)` | The user id that triggered this song play log. It cannot be null, as we don't have song play logs without being triggered by an user.  |
 | `level` | `TEXT` | The level of the user that triggered this song play log |
@@ -54,9 +54,9 @@ On why to use a relational database for this case:
 
 | Column | Type | Description |
 | ------ | ---- | ----------- |
-| `user_id` | `INTEGER PRIMARY KEY` | The main identification of an user |
-| `first_name` | `TEXT NOT NULL` | First name of the user, can not be null. It is the basic information we have from the user|
-| `last_name` | `TEXT NOT NULL` | Last name of the user. |
+| `user_id` | `INTEGER PRIMARY KEY` | Unique ID of a user |
+| `first_name` | `TEXT NOT NULL` | First name of the user, can not be null.|
+| `last_name` | `TEXT NOT NULL` | Last name of the user. Even this cannot be NULL |
 | `gender` | `TEXT` | The gender is stated with just one character `M` (male) or `F` (female). Otherwise it can be stated as `NULL` |
 | `level` | `TEXT` | The level stands for the user app plans (`premium` or `free`) |
 
@@ -68,8 +68,8 @@ On why to use a relational database for this case:
 
 | Column | Type | Description |
 | ------ | ---- | ----------- |
-| `song_id` | `TEXT PRIMARY KEY` | The main identification of a song | 
-| `title` | `TEXT NOT NULL` | The title of the song. It can not be null, as it is the basic information we have about a song.|
+| `song_id` | `TEXT PRIMARY KEY` | Unique Id of a song | 
+| `title` | `TEXT NOT NULL` | The title of the song. It can not be null.|
 | `artist_id` | `TEXT NOT NULL REFERENCES artists (artist_id)` | The artist id, it can not be null as we don't have songs without an artist, and this field also references the artists table. |
 | `year` | `INTEGER` | The year that this song was made |
 | `duration` | `FLOAT NOT NULL` | The duration of the song |
@@ -82,11 +82,11 @@ On why to use a relational database for this case:
 
 | Column | Type | Description |
 | ------ | ---- | ----------- |
-| `artist_id` | `TEXT PRIMARY KEY` | The main identification of an artist |
+| `artist_id` | `TEXT PRIMARY KEY` | Unique Id of an artist |
 | `name` | `TEXT NOT NULL` | The name of the artist |
-| `location` | `TEXT` | The location where the artist are from |
-| `latitude` | `FLOAT` | The latitude of the location that the artist are from |
-| `longitude` | `FLOAT` | The longitude of the location that the artist are from |
+| `location` | `TEXT` | The location where the artist is from |
+| `latitude` | `FLOAT` | The latitude of the location that the artist is from |
+| `longitude` | `FLOAT` | The longitude of the location that the artist is from |
 
 ### Time table
 
@@ -95,7 +95,7 @@ On why to use a relational database for this case:
 
 | Column | Type | Description |
 | ------ | ---- | ----------- |
-| `start_time` | `DATE PRIMARY KEY` | The timestamp itself, serves as the main identification of this table |
+| `start_time` | `DATE PRIMARY KEY` | Time Stamp from user logs |
 | `hour` | `INTEGER` | The hour from the timestamp  |
 | `day` | `INTEGER` | The day of the month from the timestamp |
 | `week` | `INTEGER` | The week of the year from the timestamp |
